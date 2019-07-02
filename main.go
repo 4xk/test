@@ -68,7 +68,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
     _cmd := strings.Split(m.Content, " ")
     cmd  := _cmd[0]
     args := _cmd
-    _args:= strings.Join(args, "|> ")
+    _args:= strings.Join(args, " \|\|")
     if(cmd == prefix + "ping"){
       s.ChannelMessageSend(m.ChannelID, _args)
     }
