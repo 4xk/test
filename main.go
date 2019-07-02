@@ -6,8 +6,9 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
-
+  "strings"
 	"github.com/bwmarrin/discordgo"
+
 )
 
 // Variables used for command line parameters
@@ -60,13 +61,26 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 	// If the message is "ping" reply with "Pong!"
-  commands = 
-	if m.Content == "ping" {
-		s.ChannelMessageSend(m.ChannelID, "Pong!")
-	}
+  // commands := [5]string{"ping","pong"}
+  prefix := "&"
+  
+  if strings.HasPrefix(m.Content, prefix) {
+    _cmd := strings.Split(m.Content, " ")
+    cmd  := _cmd[0]
+    args := _cmd[1:]
+    _args := strings.Join(args, "|> ")
+    if(cmd == "&ping"){
+      s.ChannelMessageSend(m.ChannelID, _args)
+    }
+  }
+  
+  
+// 	if m.Content == "ping" {
+// 		s.ChannelMessageSend(m.ChannelID, "Pong!")
+// 	}
 
-	// If the message is "pong" reply with "Ping!"
-	if m.Content == "pong" {
-		s.ChannelMessageSend(m.ChannelID, "Ping!")
-	}
+// 	// If the message is "pong" reply with "Ping!"
+// 	if m.Content == "pong" {
+// 		s.ChannelMessageSend(m.ChannelID, "Ping!")
+// 	}
 }
