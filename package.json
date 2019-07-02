@@ -7,7 +7,7 @@
   "description": "A simple Node app built on Express, instantly up and running.",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "go run main.go -t NTg3NDgzMjI0NzkyNjI5MjQ4.XRuBYA.2tqGjlYim7dUKHKVcW1SA5yJD1c"
   },
   "dependencies": {
     "express": "^4.16.4"
