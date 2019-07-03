@@ -1,1 +1,1 @@
-require('express')().use(0,_=>0).listen(3000)
+require('express')().listen(3000)
