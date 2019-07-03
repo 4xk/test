@@ -8,7 +8,7 @@ import (
 	"syscall"
   "strings"
 	"github.com/bwmarrin/discordgo"
-  "net/http"
+  // "net/http"
 
 )
 
@@ -17,17 +17,14 @@ var (
   Token  string 
 )
 func init() {
-Token = "NTg3NDgzMjI0NzkyNjI5MjQ4.XRuBYA.2tqGjlYim7dUKHKVcW1SA5yJD1c"
 
 	// flag.StringVar(&Token, "t", "", "Bot Token")
 	// flag.Parse()
 }
-func HelloServer(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintf(w, "%s!", r.URL.Path[1:])
-}
 func main() {
-    http.HandleFunc("/", HelloServer)
-    http.ListenAndServe(":8080", nil)
+  fmt.Println("Started!")
+    
+Token = "NTg3NDgzMjI0NzkyNjI5MjQ4.XRuBYA.2tqGjlYim7dUKHKVcW1SA5yJD1c"
 
 	// Create a new Discord session using the provided bot token.
 	dg, err := discordgo.New("Bot " + Token)
@@ -54,6 +51,8 @@ func main() {
 
 	// Cleanly close down the Discord session.
 	dg.Close()
+  // http.HandleFunc("/", HelloServer)
+  //   http.ListenAndServe(":8080", nil)
 }
 
 // This function will be called (due to AddHandler above) every time a new
