@@ -1,4 +1,4 @@
-require('express')().use((r,w)=>{w.send('')}).listen(8080)
+require('express')().use((r,w)=>w.send('')).listen(8080)
 
 
 // function method1(){
