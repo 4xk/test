@@ -1,33 +1,38 @@
 package main
 
 import (
-	"flag"
+	// "flag"
 	"fmt"
 	"os"
 	"os/signal"
 	"syscall"
   "strings"
 	"github.com/bwmarrin/discordgo"
+  "net/http"
 
 )
 
 // Variables used for command line parameters
 var (
-	Token string
+  Token  string 
 )
-
 func init() {
+Token = "NTg3NDgzMjI0NzkyNjI5MjQ4.XRuBYA.2tqGjlYim7dUKHKVcW1SA5yJD1c"
 
-	flag.StringVar(&Token, "t", "", "Bot Token")
-	flag.Parse()
+	// flag.StringVar(&Token, "t", "", "Bot Token")
+	// flag.Parse()
 }
-
+func HelloServer(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintf(w, "%s!", r.URL.Path[1:])
+}
 func main() {
+    http.HandleFunc("/", HelloServer)
+    http.ListenAndServe(":8080", nil)
 
 	// Create a new Discord session using the provided bot token.
 	dg, err := discordgo.New("Bot " + Token)
 	if err != nil {
-		fmt.Println("error creating Discord session,", err)
+		fmt.Println("error creating discord session,", err)
 		return
 	}
 

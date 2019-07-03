@@ -1,6 +1,14 @@
-{
-  "watch": {
-    "test": "*.*",
-    "a":"a"
+
+{"restart": {
+    "exclude": [
+      "^public/",
+      "^dist/"
+    ],
+    "include": [
+      "\\.js$",
+      "\\.coffee$",
+      "\\.json",
+      "\\.go"
+    ]
   }
 }
