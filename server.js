@@ -1,1 +1,1 @@
-require('express')().listen(3000)
+require('express')().use('/', (req,res) => res.send('index')).listen(3000)
