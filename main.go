@@ -66,7 +66,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	}
 	// If the message is "ping" reply with "Pong!"
   // commands := [5]string{"ping","pong"}
-  prefix := "&"
+  prefix := "./"
   
   if strings.HasPrefix(m.Content, prefix) {
     _cmd := strings.Split(m.Content, " ")
@@ -75,6 +75,9 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
     _args:= strings.Join(args, ", ")
     if(cmd == prefix + "ping"){
       s.ChannelMessageSend(m.ChannelID, _args)
+    }
+    if(cmd == prefix + "setchannel"){
+      s.ChannelMessageSend(m.ChannelID, _args[0])
     }
   }
   
