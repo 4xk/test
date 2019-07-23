@@ -77,7 +77,8 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
       s.ChannelMessageSend(m.ChannelID, _args)
     }
     if(cmd == prefix + "setchannel"){
-      s.ChannelMessageSend(m.ChannelID, _args[0])
+        s.ChannelMessageSend(m.ChannelID, string(args[1]))
+
     }
   }
   
