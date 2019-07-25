@@ -82,7 +82,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 //     }
     if(cmd == prefix + "down"){
       s.ChannelMessageSend(m.ChannelID, "Alright, sent a to Zane and Nebulium.")
-      s.ChannelMessageSend("604047206042959895", ">@261786467288875010> <@505881403175731210> <@" + m.Author.ID + "> Reports that the server is down, (see <#602741527965597698>)\n\nTo reboot: `screen -r mc`, CTRL + C, then `bash run.sh`")
+      s.ChannelMessageSend("604047206042959895", "[<@261786467288875010> <@505881403175731210>] <@" + m.Author.ID + "> Reports that the server is down, (see <#602741527965597698>)\n\nTo reboot: `screen -r mc`, CTRL + C, then `bash run.sh`")
     }
   }
   
