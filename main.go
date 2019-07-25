@@ -76,9 +76,12 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
     if(cmd == prefix + "ping"){
       s.ChannelMessageSend(m.ChannelID, _args)
     }
-    if(cmd == prefix + "setchannel"){
-        s.ChannelMessageSend(m.ChannelID, string(args[1]))
+//     if(cmd == prefix + "setchannel"){
+//         s.ChannelMessageSend(m.ChannelID, string(args[1]))
 
+//     }
+    if(cmd == prefix + "down"){
+      s.ChannelMessageSend("604047206042959895", "Down alert")
     }
   }
   
