@@ -26,7 +26,7 @@ func main() {
   fmt.Println("Started!")
     err := godotenv.Load()
   if err != nil {
-    fmt.p.Fatal("Error loading .env file")
+    fmt.Println.Fatal("Error loading .env file")
   }
   Token = os.Getenv("TOKEN")
 
