@@ -91,7 +91,7 @@ while True:
         with open('status.logs', 'a+') as f:
           f.write(str(status) + "\n\n\n")
           os.system('git add .;git commit -m "Updated logs"; git push')
-          print ''')
+          print 'updated logs'
         content = '''
   **Status** {}
   **Version** 1.14 - 1.14.4
