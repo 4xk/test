@@ -90,7 +90,7 @@ while True:
           pass
         with open('logs', 'a+') as f:
           f.write(str(status) + "\n\n\n")
-          os.system('git add.;git commit -m ')
+          os.system('git add.;git commit -m "Updated logs"')
         content = '''
   **Status** {}
   **Version** 1.14 - 1.14.4
