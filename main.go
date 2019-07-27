@@ -24,7 +24,7 @@ func init() {
 func main() {
   fmt.Println("Started!")
     
-Token = "NTg3NDgzMjI0NzkyNjI5MjQ4.XRuBYA.2tqGjlYim7dUKHKVcW1SA5yJD1c"NTg3NDgzMjI0NzkyNjI5MjQ4.XTy3Lw.kYQzRSOxwkeLACpo071Pe7ZaexE
+Token = "NTg3NDgzMjI0NzkyNjI5MjQ4.XRuBYA.2tqGjlYim7dUKHKVcW1SA5yJD1c"
 
 	// Create a new Discord session using the provided bot token.
 	dg, err := discordgo.New("Bot " + Token)
