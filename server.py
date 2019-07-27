@@ -141,6 +141,6 @@ while True:
                            ,
                            'Authorization': 'Bot ' + os.getenv('TOKEN')
                            })
-    time.sleep(2
+    time.sleep(2)
 
 			
