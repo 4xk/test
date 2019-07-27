@@ -135,7 +135,7 @@ while True:
       r = requests.request('PATCH',
                            'https://discordapp.com/api/v6/channels/602741527965597698/messages/602747665293508608'
                            ,
-                           json={'content': 'Some stats for the server, updated every 20 seconds!'
+                           json={'content': 'Some stats for the server, updated every 5 seconds!'
                            , 'embed': x},
                            headers={'Content-Type': 'application/json'
                            ,
