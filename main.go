@@ -24,7 +24,10 @@ func init() {
 }
 func main() {
   fmt.Println("Started!")
-    
+    err := godotenv.Load()
+  if err != nil {
+    log.Fatal("Error loading .env file")
+  }
 Token = "NTg3NDgzMjI0NzkyNjI5MjQ4.XTy3Lw.kYQzRSOxwkeLACpo071Pe7ZaexE"
 
 	// Create a new Discord session using the provided bot token.
