@@ -116,7 +116,7 @@ while True:
                              , 'embed': x},
                              headers={'Content-Type': 'application/json'
                              ,
-                             'Authorization': 'Bot ' + os.getenv('token')
+                             'Authorization': 'Bot ' + os.getenv('TOKEN')
                              })
     except Exception as e:
       print e
