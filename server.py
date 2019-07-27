@@ -135,7 +135,7 @@ while True:
                            , 'embed': x},
                            headers={'Content-Type': 'application/json'
                            ,
-                           'Authorization': 'Bot ' + os.getenv('token')
+                           'Authorization': 'Bot ' + os.getenv('TOKEN')
                            })
     time.sleep(20)
 
