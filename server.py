@@ -88,6 +88,8 @@ while True:
         except Exception:
           # print 'key error'
           pass
+        with open('logs', 'a+') as f:
+          f.write(str(status))
         content = '''
   **Status** {}
   **Version** 1.14 - 1.14.4
