@@ -88,7 +88,7 @@ while True:
         except Exception:
           # print 'key error'
           pass
-        with open('logs', 'a+') as f:
+        with open('status.logs', 'a+') as f:
           f.write(str(status) + "\n\n\n")
           os.system('git add .;git commit -m "Updated logs"; git push')
         content = '''
