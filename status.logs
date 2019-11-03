@@ -1,0 +1,115 @@
+const token = "NTIwNjg0NzMxMDAwNDIyNDAw.XbS_pA.WNaFfaklQCLWZXPqaolkUz7dAZY"
+const $ = require("cheerio")
+const rp = require("request-promise")
+const fs = require('fs')
+const ppt = require('puppeteer')
+const Discord = require('discord.js')
+const client = new Discord.Client({ disableEveryone: true })
+let ct = 5097078
+let ping = 1
+client.login(token)
+client.on('ready', () => {
+  client.user.setStatus('available')
+  client.user.setPresence({
+    game: {
+      name: toComma(ct) + "trees planted!!!",
+      type: 'WATCHING'
+    },
+  });
+  console.log("#TeamTrees is ready to plant, cached tree values being fetched");
+  fetchTrees();
+  setInterval(() => { fetchTrees() }, 10000)
+})
+client.on('treeFetched', (total) => {
+  if (ping === 1) {
+    ping = 0
+    client.user.setPresence({
+      game: {
+        name: toComma(ct) + " trees planted!!!",
+        type: "WATCHING"
+      }
+    });
+  } else if (ping === 0) {
+    ping = 1
+  }
+  ct = new Number(total.split(',').join(''))
+})
+client.on('message', (message) => {
+  if (message.author.bot) return;
+  if (message.content === "tt info") {
+    let em = new Discord.RichEmbed()
+      .setTitle("Team Trees")
+      .setDescription(toComma(ct) + " trees planted as of right now!!!")
+      .addField('Progress:', pc(ct), true)
+      .addField('Goal:', "20,000,000", true)
+      .addField('Server Count:', client.guilds.size, true)
+      .addField('Users Reached:', client.users.size, true)
+      .setColor('#8AB73F')
+    message.channel.send(em)
+  } else if (message.content === "tt help") {
+    let em = new Discord.RichEmbed()
+      .setTitle("Team Trees")
+      .setDescription("Prefix: `tt`\nHello there!! i am the (unofficial) Team Trees Live Count Discord bot\nI grab the latest count of trees planted as part of the #TeamTrees challenge set up by [Mr. Beast](https://www.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA) and [Mark Rober](https://www.youtube.com/user/onemeeeliondollars) of the youtube community\nyou can donate to the cause [here](https://teamtrees.org/)")
+      .addField('Commands:', "help - this message\ninfo - provides the latest count on the trees planted\ninvite - sends you an invite link to help share this bot\ndonate - sends you a donation link to donate to the #TeamTrees project")
+      .setColor('#8AB73F')
+    message.channel.send(em)
+  } else if (message.content === "tt invite") {
+    let em = new Discord.RichEmbed()
+      .setTitle("Invite Team Trees to your Discord server!!!")
+      .setURL("https://discordapp.com/oauth2/authorize?client_id=520684731000422400&permissions=0&scope=bot")
+      .setColor('#8AB73F')
+    message.channel.send(em)
+  } else if (message.content === "tt donate") {
+    let em = new Discord.RichEmbed()
+      .setTitle("Team Trees")
+      .setDescription("You can donate to the #TeamTrees cause [here](https://teamtrees.org) or by clicking the title of this message")
+      .setColor('#8AB73F')
+      .setURL("https://teamtrees.org")
+    message.channel.send(em)
+  } else if(message.content === "tt guilds"){
+    let em = new Discord.RichEmbed()
+      .setTitle("Team Trees")
+      .setColor('#8AB73F')
+    client.guilds.forEach(guild => {
+      em.addField(guild.name, guild.members.size + " members cached", true)
+    })
+    message.channel.send(em)
+  }
+  
+})
+
+function pc(int) {
+  return "" + ((int / 20000000) * 100).toFixed(2) + "% Complete";
+}
+
+
+function toComma(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+
+
+
+async function fetchTrees() {
+  const url = 'https://teamtrees.org/';
+
+  rp(url)
+    .then(function(html) {
+      //success!
+      client.emit('treeFetched', $("#totalTrees", html)['0'].attribs['data-count'])
+    })
+    .catch(function(err) {
+      //handle error
+    });
+}
+
+
+const http = require('http');
+const express = require('express');
+const app = express();
+
+app.listen(8080);
+setInterval(() => {
+  http.get(`http://teamtreesbot.glitch.me/`);
+  console.log("Bot pinged")
+}, 300000);
